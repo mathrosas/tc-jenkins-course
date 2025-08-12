@@ -1,7 +1,12 @@
 pipeline {
     agent any 
     stages {
-        stage('Print and list current directory') {
+        stage('Run tests') {
+            steps {
+                sh 'python -m unittest discover -s tests -v'
+            }
+        }
+        stage('Print + list current directory') {
             steps {
                 sh 'pwd'
                 sh 'ls -al'
@@ -45,3 +50,4 @@ pipeline {
         }
     }
 }
+
